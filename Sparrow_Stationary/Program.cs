@@ -16,7 +16,7 @@ namespace Sparrow_Stationary
         {
             Application.EnableVisualStyles();
                    Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sparrow_Stationary.SendEmail());
+            Application.Run(new Sparrow_Stationary.welcome());
         }
     }
 }

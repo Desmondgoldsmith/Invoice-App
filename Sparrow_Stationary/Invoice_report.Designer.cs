@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Invoice_report));
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.invoicereport1 = new Sparrow_Stationary.invoicereport();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -60,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(1284, 701);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.crystalReportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Invoice_report";

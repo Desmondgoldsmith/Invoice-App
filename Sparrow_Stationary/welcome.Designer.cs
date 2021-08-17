@@ -39,7 +39,7 @@
             this.progressBar1.BackColor = System.Drawing.Color.Lime;
             this.progressBar1.Location = new System.Drawing.Point(-1, 253);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(630, 23);
+            this.progressBar1.Size = new System.Drawing.Size(617, 23);
             this.progressBar1.Step = 20;
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 20;
@@ -55,10 +55,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(627, 278);
+            this.ClientSize = new System.Drawing.Size(614, 278);
             this.Controls.Add(this.progressBar1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "welcome";
