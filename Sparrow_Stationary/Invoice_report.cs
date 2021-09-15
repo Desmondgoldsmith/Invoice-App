@@ -40,5 +40,10 @@ namespace Sparrow_Stationary
                 MessageBox.Show(ex.Message);
             }
             }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

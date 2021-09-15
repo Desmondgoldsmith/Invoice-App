@@ -32,10 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(USERS));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userroleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.passworduserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sparrowUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sparrowDBDataSet4 = new Sparrow_Stationary.SparrowDBDataSet4();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -52,6 +48,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.sparrowUsersTableAdapter = new Sparrow_Stationary.SparrowDBDataSet4TableAdapters.SparrowUsersTableAdapter();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userroleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sparrowUsersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sparrowDBDataSet4)).BeginInit();
@@ -76,8 +76,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.usernameDataGridViewTextBoxColumn,
-            this.userroleDataGridViewTextBoxColumn,
-            this.passworduserDataGridViewTextBoxColumn});
+            this.userroleDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.sparrowUsersBindingSource;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView1.Location = new System.Drawing.Point(18, 310);
@@ -85,36 +84,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(924, 167);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "USER NAME";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.usernameDataGridViewTextBoxColumn.Width = 350;
-            // 
-            // userroleDataGridViewTextBoxColumn
-            // 
-            this.userroleDataGridViewTextBoxColumn.DataPropertyName = "userrole";
-            this.userroleDataGridViewTextBoxColumn.HeaderText = "USER ROLE";
-            this.userroleDataGridViewTextBoxColumn.Name = "userroleDataGridViewTextBoxColumn";
-            this.userroleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.userroleDataGridViewTextBoxColumn.Width = 330;
-            // 
-            // passworduserDataGridViewTextBoxColumn
-            // 
-            this.passworduserDataGridViewTextBoxColumn.DataPropertyName = "passworduser";
-            this.passworduserDataGridViewTextBoxColumn.HeaderText = "PASSWORD";
-            this.passworduserDataGridViewTextBoxColumn.Name = "passworduserDataGridViewTextBoxColumn";
-            this.passworduserDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // sparrowUsersBindingSource
             // 
@@ -132,8 +102,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Admin",
-            "User"});
+            "Admin"});
             this.comboBox1.Location = new System.Drawing.Point(510, 90);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(296, 32);
@@ -239,6 +208,7 @@
             this.button6.TabIndex = 30;
             this.button6.Text = "CLEAR";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -254,6 +224,7 @@
             this.button5.TabIndex = 29;
             this.button5.Text = "DELETE";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -268,6 +239,7 @@
             this.button4.TabIndex = 28;
             this.button4.Text = "UPDATE";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -288,6 +260,38 @@
             // 
             this.sparrowUsersTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(96, 39);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.PasswordChar = '*';
+            this.textBox4.Size = new System.Drawing.Size(38, 29);
+            this.textBox4.TabIndex = 31;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "USER NAME";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.usernameDataGridViewTextBoxColumn.Width = 350;
+            // 
+            // userroleDataGridViewTextBoxColumn
+            // 
+            this.userroleDataGridViewTextBoxColumn.DataPropertyName = "userrole";
+            this.userroleDataGridViewTextBoxColumn.HeaderText = "USER ROLE";
+            this.userroleDataGridViewTextBoxColumn.Name = "userroleDataGridViewTextBoxColumn";
+            this.userroleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.userroleDataGridViewTextBoxColumn.Width = 350;
+            // 
             // USERS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +300,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(966, 516);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -346,9 +351,9 @@
         private SparrowDBDataSet4 sparrowDBDataSet4;
         private System.Windows.Forms.BindingSource sparrowUsersBindingSource;
         private SparrowDBDataSet4TableAdapters.SparrowUsersTableAdapter sparrowUsersTableAdapter;
+        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn userroleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passworduserDataGridViewTextBoxColumn;
     }
 }

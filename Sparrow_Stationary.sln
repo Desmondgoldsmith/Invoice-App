@@ -7,12 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparrow_Stationary", "Sparr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B50F4C0B-52D1-4053-8DAD-EA4316A505DF}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Desktop\Microsoft.Office.Interop.Excel.dll = ..\..\..\..\Desktop\Microsoft.Office.Interop.Excel.dll
 		Sparrow_Stationary\RealInvoice_reports.rpt = Sparrow_Stationary\RealInvoice_reports.rpt
 		Sparrow_Stationary\SparrowDBDataSet3.Designer.cs = Sparrow_Stationary\SparrowDBDataSet3.Designer.cs
 		Sparrow_Stationary\SparrowDBDataSet3.xsc = Sparrow_Stationary\SparrowDBDataSet3.xsc
 		Sparrow_Stationary\SparrowDBDataSet3.xsd = Sparrow_Stationary\SparrowDBDataSet3.xsd
 		Sparrow_Stationary\SparrowDBDataSet3.xss = Sparrow_Stationary\SparrowDBDataSet3.xss
 	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sparrow Invoice App", "Sparrow Invoice App\Sparrow Invoice App.vdproj", "{F358DA29-5C6C-420F-90F1-FE0490996658}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +33,10 @@ Global
 		{156A5C61-C9F9-4908-A4EA-F74F6C38862E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{156A5C61-C9F9-4908-A4EA-F74F6C38862E}.Release|x86.ActiveCfg = Release|Any CPU
 		{156A5C61-C9F9-4908-A4EA-F74F6C38862E}.Release|x86.Build.0 = Release|Any CPU
+		{F358DA29-5C6C-420F-90F1-FE0490996658}.Debug|Any CPU.ActiveCfg = Debug
+		{F358DA29-5C6C-420F-90F1-FE0490996658}.Debug|x86.ActiveCfg = Debug
+		{F358DA29-5C6C-420F-90F1-FE0490996658}.Release|Any CPU.ActiveCfg = Release
+		{F358DA29-5C6C-420F-90F1-FE0490996658}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

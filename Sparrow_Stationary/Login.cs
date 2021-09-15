@@ -21,7 +21,7 @@ namespace Sparrow_Stationary
         string query = "";
         SqlDataReader dr;
         SqlCommand cmd;
-        string state;
+        //string state;
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             panel1.BackColor = Color.FromArgb(165, Color.Black);
