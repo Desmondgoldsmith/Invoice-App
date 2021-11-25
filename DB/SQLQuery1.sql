@@ -38,7 +38,7 @@ prof_Date varchar(90)  null,
 
 )
 
-
+select * from proforma_add
 
 
 
@@ -74,10 +74,11 @@ update SparrowUsers set username=@uname,userrole=@urole,passworduser=@upass
 End
 
 
+--insert temp user [default]
+ insert into SparrowUsers(username,userrole,passworduser)
+values('user','Admin','user')
 
-
-
-
+ 
 
 
 

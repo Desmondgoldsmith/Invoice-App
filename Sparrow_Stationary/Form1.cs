@@ -33,10 +33,10 @@ namespace Sparrow_Stationary
             //// TODO: This line of code loads data into the 'sparrowDBDataSet2.invoice_add' table. You can move, or remove it, as needed.
             //this.invoice_addTableAdapter1.Fill(this.sparrowDBDataSet2.invoice_add);
             ////makes picturebox13 round
-            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
-            gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
-            Region rg = new Region(gp);
-            pictureBox1.Region = rg;
+            //System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            //gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
+            //Region rg = new Region(gp);
+            //pictureBox1.Region = rg;
 
             panel8.Visible = false;
             panel9.Visible = false;
@@ -53,55 +53,24 @@ namespace Sparrow_Stationary
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel9.Visible = false;
-            var user = new USERS();
-            user.Hide();
-            panel8.Visible = true;
-            panel9.Visible = true;
-            dataGridView2.ForeColor = Color.Black;
-            dataGridView2.Refresh();
-            //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
-            //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
-
-            dessy.opencon();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT TOP 15 id,customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date   FROM invoice_add  ORDER BY id DESC", dessy.returnCon());
-            DataTable dt = new DataTable();
-            dataGridView2.DataSource = dt;
-            da.Fill(dt);
-
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var users = new USERS();
-            users.MdiParent = this;
-            users.Show();
-            panel8.Visible = false;
-            panel9.Visible = false;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panel9.Visible = false;
-            dataGridView1.ForeColor = Color.Black;
-            var user = new USERS();
-            user.Hide();
-            Randomgenerator();
-            panel8.Visible = true;
+            
+            
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
-            {
-                System.Diagnostics.Process.Start("https://mail.google.com");
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.Message);
-            }
-
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -688,13 +657,69 @@ namespace Sparrow_Stationary
 
         private void button15_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ForeColor = Color.Black;
+            var user = new USERS();
+            user.Hide();
+            Randomgenerator();
+            panel8.Visible = true;
+        }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
             var users = new ProformaMain();
             users.MdiParent = this;
             users.dataGridView1.ForeColor = Color.Black;
 
             Randomgenerator();
             users.Show();
-            
+
+        }
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            panel9.Visible = false;
+            var user = new USERS();
+            user.Hide();
+            panel8.Visible = true;
+            panel9.Visible = true;
+            dataGridView2.ForeColor = Color.Black;
+            dataGridView2.Refresh();
+            //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
+            //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
+
+            dessy.opencon();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT TOP 15 id,customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date   FROM invoice_add  ORDER BY id DESC", dessy.returnCon());
+            DataTable dt = new DataTable();
+            dataGridView2.DataSource = dt;
+            da.Fill(dt);
+
+        }
+
+        private void bunifuButton4_Click(object sender, EventArgs e)
+        {
+            var users = new USERS();
+            users.MdiParent = this;
+            users.Show();
+            panel8.Visible = false;
+            panel9.Visible = false;
+        }
+
+        private void bunifuButton5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://mail.google.com");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.Message);
+            }
+
         }
     }
 }

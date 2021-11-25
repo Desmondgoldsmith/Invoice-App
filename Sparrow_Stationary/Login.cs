@@ -29,25 +29,25 @@ namespace Sparrow_Stationary
 
         private void button1_Click(object sender, EventArgs e)
         {
-            vallogin();
+           
         }
 
-
+        //function that handles login
         public void vallogin()
         {
-
-            if (string.IsNullOrWhiteSpace(textBox1.Text.ToString()))
+            //Validating textboxes
+            if (string.IsNullOrWhiteSpace(bunifuTextBox1.Text.ToString()))
             {
 
                 MessageBox.Show("Please Input Your UserName", "UserName Required", 0, MessageBoxIcon.Information);
-                textBox1.Focus();
+                bunifuTextBox1.Focus();
                 return;
             }
-            if (string.IsNullOrWhiteSpace(textBox2.Text.ToString()))
+            if (string.IsNullOrWhiteSpace(bunifuTextBox2.Text.ToString()))
             {
 
                 MessageBox.Show("Please Input Your Password", "Password Required", 0, MessageBoxIcon.Information);
-                textBox2.Focus();
+                bunifuTextBox2.Focus();
                 return;
             }
             else
@@ -55,27 +55,28 @@ namespace Sparrow_Stationary
 
                 try
                 {
-
+                    //selecting from the table and comparing values in textboxes to values in table
                     des.opencon();
-                    query = "SELECT * FROM SparrowUsers WHERE username = '" + textBox1.Text + "'and  passworduser ='" + textBox2.Text + "'  ";
+                    query = "SELECT * FROM SparrowUsers WHERE username = '" + bunifuTextBox1.Text + "'and  passworduser ='" + bunifuTextBox2.Text + "'  ";
                     cmd = new SqlCommand(query, des.returnCon());
                     dr = cmd.ExecuteReader();
-
+                    //if a row in the table exist with same values in texbox,
                     if (dr.HasRows == true)
                     {
 
                         if (dr.Read())
                         {
                             //state = dr.GetValue(8).ToString();
+                            //assigning values of the role column to a variable name role
                             role = dr.GetValue(2).ToString();
                             //string Date = dr.GetValue(4).ToString();
-
-                            if (textBox1.Text == dr.GetValue(1).ToString() && role == "Admin" && textBox2.Text == dr.GetValue(3).ToString())
+                            //if role is equal to admin and the password is equal to the password in the textbox, 
+                            if (bunifuTextBox1.Text == dr.GetValue(1).ToString() && role == "Admin" && bunifuTextBox2.Text == dr.GetValue(3).ToString())
                             {
-                                MessageBox.Show(" '" + textBox1.Text + "' Logged In Successfully", "Login Successful", 0, MessageBoxIcon.Information);
+                                MessageBox.Show(" '" + bunifuTextBox2.Text + "' Logged In Successfully", "Login Successful", 0, MessageBoxIcon.Information);
                                 var main = new Form1();
                                 main.Show();
-                                main.label1.Text = textBox1.Text;
+                                main.label1.Text = bunifuTextBox1.Text;
                                 main.label2.Text = role;
                                 // main.ShowInTaskbar = false;
                                 main.FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -83,15 +84,15 @@ namespace Sparrow_Stationary
 
                                 this.Hide();
                             }
-                            else if (textBox1.Text == dr.GetValue(1).ToString() && role == "Admin" && textBox2.Text == dr.GetValue(3).ToString())
+                            else if (bunifuTextBox1.Text == dr.GetValue(1).ToString() && role == "Admin" && bunifuTextBox2.Text == dr.GetValue(3).ToString())
                             {
 
-                                MessageBox.Show(" '" + textBox1.Text + "' Logged In Successfully", "Login Successful", 0, MessageBoxIcon.Information);
+                                MessageBox.Show(" '" + bunifuTextBox2.Text + "' Logged In Successfully", "Login Successful", 0, MessageBoxIcon.Information);
                                 var main = new Form1();
                                 main.Show();
-                                button1.Enabled = false;
-                                button2.Enabled = false;
-                                main.label1.Text = textBox1.Text;
+                                 //bunifuButton1.Enabled = false;
+                                //button2.Enabled = false;
+                                main.label1.Text = bunifuTextBox1.Text;
                                 main.label2.Text = role;
                                 // main.ShowInTaskbar = false;
                                 main.FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -129,6 +130,26 @@ namespace Sparrow_Stationary
                 this.Show();
             }
 
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            vallogin();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton1_Click_1(object sender, EventArgs e)
+        {
+            vallogin();
         }
     }
 }
