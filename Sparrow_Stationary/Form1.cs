@@ -75,21 +75,7 @@ namespace Sparrow_Stationary
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //logout
-            if (MessageBox.Show("ARE YOU SURE YOU WANT TO LOGOUT ??", "LOGOUT?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                this.Dispose();
-                var loginxx = new Login();
-                loginxx.Show();
-            }
-            else
-            {
-                this.Show();
-                var loginxx = new Login();
-                
-                loginxx.Hide();
 
-            }
         }
 
         private void toolStripStatusLabel2_Click(object sender, EventArgs e)
@@ -499,15 +485,7 @@ namespace Sparrow_Stationary
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow click = dataGridView2.Rows[e.RowIndex];
-                textBox11.Text = click.Cells[9].Value.ToString();
-                var receipt = new Invoice_report();
-                receipt.textBox1.Text = this.textBox11.Text;
-                receipt.Show();
-
-            }
+         
         }
 
         private void button13_Click(object sender, EventArgs e)
@@ -526,18 +504,18 @@ namespace Sparrow_Stationary
             app.Visible = true;
             Worksheet = workbook.Sheets["sheet1"];
             Worksheet = workbook.ActiveSheet;
-            for (int i = 0; i < dataGridView2.Columns.Count; i++)
+            for (int i = 0; i < bunifuDataGridView1.Columns.Count; i++)
             {
-                Worksheet.Cells[1, i + 1] = dataGridView2.Columns[i].HeaderText;
+                Worksheet.Cells[1, i + 1] = bunifuDataGridView1.Columns[i].HeaderText;
             }
 
-            for (int j = 0; j <= dataGridView2.Rows.Count - 1; j++)
+            for (int j = 0; j <= bunifuDataGridView1.Rows.Count - 1; j++)
             {
 
-                for (int i = 0; i < dataGridView2.Columns.Count; i++)
+                for (int i = 0; i < bunifuDataGridView1.Columns.Count; i++)
                 {
 
-                    Worksheet.Cells[j + 2, i + 1] = dataGridView2.Rows[j].Cells[i].Value.ToString();
+                    Worksheet.Cells[j + 2, i + 1] = bunifuDataGridView1.Rows[j].Cells[i].Value.ToString();
                 }
             }
             Worksheet.Columns.AutoFit();
@@ -564,72 +542,18 @@ namespace Sparrow_Stationary
         private void textBox10_TextChanged(object sender, EventArgs e)
         {
 
-            try
-            {
-                string search = textBox10.Text;
-                SqlCommand cmd = new SqlCommand("select * from invoice_add  where CONCAT(customerName,invoice_id) like '%" + textBox10.Text + "%' ", dessy.returnCon());
-                //view records in datagrid
-                SqlDataAdapter sda = new SqlDataAdapter("select * from invoice_add  where CONCAT(customerName,invoice_id) like '%" + textBox10.Text + "%' ", dessy.returnCon());
-               dessy.opencon();
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                dataGridView2.DataSource = dt;
-                //end
-                SqlDataReader rd;
-                rd = cmd.ExecuteReader();
-                if (rd.Read())
-                {
-                    if (string.IsNullOrWhiteSpace(textBox10.Text.ToString()))
-                    {
-                        //Clear();
-                    }
-                }
-                else
-                {
-                    rd.Close();
-                    MessageBox.Show("RECORD, '" + textBox10.Text + "' NOT FOUND", "ERROR", 0, MessageBoxIcon.Error);
-                    textBox10.Clear();
-
-                }
-                rd.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                dessy.closeCon();
-
-            }
-
-
 
 
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            dessy.opencon();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM invoice_add ", dessy.returnCon());
-            DataTable dt = new DataTable();
-
-            dataGridView2.DataSource = dt;
-            da.Fill(dt);
-            button13.Enabled = true;
+          
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow click = dataGridView2.Rows[e.RowIndex];
-                textBox11.Text = click.Cells[9].Value.ToString();
-                var receipt = new Invoice_report();
-                receipt.textBox1.Text = this.textBox11.Text;
-                receipt.Show();
-
-            }
+            
         }
 
         private void panel10_Paint(object sender, PaintEventArgs e)
@@ -687,15 +611,15 @@ namespace Sparrow_Stationary
             user.Hide();
             panel8.Visible = true;
             panel9.Visible = true;
-            dataGridView2.ForeColor = Color.Black;
-            dataGridView2.Refresh();
+            bunifuDataGridView1.ForeColor = Color.Black;
+            bunifuDataGridView1.Refresh();
             //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
             //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
 
             dessy.opencon();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT TOP 15 id,customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date   FROM invoice_add  ORDER BY id DESC", dessy.returnCon());
+            SqlDataAdapter da = new SqlDataAdapter("SELECT TOP 15 id,customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date FROM invoice_add  ORDER BY id DESC ", dessy.returnCon());
             DataTable dt = new DataTable();
-            dataGridView2.DataSource = dt;
+            bunifuDataGridView1.DataSource = dt;
             da.Fill(dt);
 
         }
@@ -720,6 +644,108 @@ namespace Sparrow_Stationary
                 MessageBox.Show(exp.Message);
             }
 
+        }
+
+        private void bunifuButton6_Click(object sender, EventArgs e)
+        {
+            //logout
+            if (MessageBox.Show("ARE YOU SURE YOU WANT TO LOGOUT ??", "LOGOUT?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                this.Dispose();
+                var loginxx = new Login();
+                loginxx.Show();
+            }
+            else
+            {
+                this.Show();
+                var loginxx = new Login();
+
+                loginxx.Hide();
+
+            }
+
+        }
+
+        private void bunifuTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string search = bunifuTextBox1.Text;
+                SqlCommand cmd = new SqlCommand("select * from invoice_add  where CONCAT(customerName,invoice_id) like '%" + bunifuTextBox1.Text + "%' ", dessy.returnCon());
+                //view records in datagrid
+                SqlDataAdapter sda = new SqlDataAdapter("select * from invoice_add  where CONCAT(customerName,invoice_id) like '%" + bunifuTextBox1.Text + "%' ", dessy.returnCon());
+                dessy.opencon();
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                bunifuDataGridView1.DataSource = dt;
+                //end
+                SqlDataReader rd;
+                rd = cmd.ExecuteReader();
+                if (rd.Read())
+                {
+                    if (string.IsNullOrWhiteSpace(bunifuTextBox1.Text.ToString()))
+                    {
+                        //Clear();
+                    }
+                }
+                else
+                {
+                    rd.Close();
+                    MessageBox.Show("RECORD, '" + bunifuTextBox1.Text + "' NOT FOUND", "ERROR", 0, MessageBoxIcon.Error);
+                    bunifuTextBox1.Clear();
+
+                }
+                rd.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dessy.closeCon();
+
+            }
+
+
+        }
+
+        private void bunifuDataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow click = bunifuDataGridView1.Rows[e.RowIndex];
+                textBox11.Text = click.Cells[9].Value.ToString();
+                var receipt = new Invoice_report();
+                receipt.textBox1.Text = this.textBox11.Text;
+                receipt.Show();
+
+            }
+        }
+
+        private void bunifuDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow click = bunifuDataGridView1.Rows[e.RowIndex];
+                textBox11.Text = click.Cells[9].Value.ToString();
+                var receipt = new Invoice_report();
+                receipt.textBox1.Text = this.textBox11.Text;
+                receipt.Show();
+
+            }
+        }
+
+        private void bunifuButton7_Click(object sender, EventArgs e)
+        {
+            dessy.opencon();
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM invoice_add ", dessy.returnCon());
+            DataTable dt = new DataTable();
+
+            bunifuDataGridView1.DataSource = dt;
+            da.Fill(dt);
+            button13.Enabled = true;
         }
     }
 }
