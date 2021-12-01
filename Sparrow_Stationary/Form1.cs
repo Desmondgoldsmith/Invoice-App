@@ -24,8 +24,8 @@ namespace Sparrow_Stationary
         HouseOfConnections dessy = new HouseOfConnections();
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker2.CustomFormat = " ";
+            //this.bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
+            //this.bunifuDatePicker2.CustomFormat = " ";
             // TODO: This line of code loads data into the 'sparrowDBDataSet3.invoice_add' table. You can move, or remove it, as needed.
             //this.invoice_addTableAdapter.Fill(this.sparrowDBDataSet3.invoice_add);
             // TODO: This line of code loads data into the 'sparrowDBDataSet3.invoice_add' table. You can move, or remove it, as needed.
@@ -100,80 +100,27 @@ namespace Sparrow_Stationary
 
         private void button7_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrWhiteSpace(textBox5.Text))
-                {
-                    MessageBox.Show("Input Product Description", "Warning", 0, MessageBoxIcon.Error);
-                    textBox5.Focus();
-                    return;
-                }
-                else if (string.IsNullOrWhiteSpace(textBox6.Text))
-                {
-                    MessageBox.Show("Input Quantity", "Warning", 0, MessageBoxIcon.Error);
-                    textBox6.Focus();
-                    return;
-                }
-                else if (string.IsNullOrWhiteSpace(textBox7.Text))
-                {
-                    MessageBox.Show("Input Unit Price", "Warning", 0, MessageBoxIcon.Error);
-                    textBox7.Focus();
-                    return;
-                }
-                else if (string.IsNullOrWhiteSpace(textBox8.Text))
-                {
-                    MessageBox.Show("Input Total Price", "Warning", 0, MessageBoxIcon.Error);
-                    textBox8.Focus();
-                    return;
-                }
-                else
-                {
-
-                    string prod_description = textBox5.Text;
-                    string qty = textBox6.Text;
-                    string u_price = textBox7.Text;
-                    string t_price = textBox8.Text;
-                    string[] row = { prod_description, qty, u_price, t_price };
-                    dataGridView1.Rows.Add(row);
-                    //clear record
-                    ClearRecord();
-                    //calculating the sum of total prices
-                    int sum = 0;
-                    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-                    {
-                        sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
-                    }
-                    label15.Text = sum.ToString();
-                    textBox9.Text =  sum.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            
         }
 
         public void ClearRecord()
         {
-            textBox5.Clear();
-            textBox6.Clear();
-            textBox7.Clear();
-            textBox8.Clear();
+            bunifuTextBox6.Clear();
+            bunifuTextBox7.Clear();
+            bunifuTextBox8.Clear();
+            bunifuTextBox9.Clear();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            ClearRecord();
-            dataGridView1.Rows.Clear();
-        }
+                    }
 
         private void Randomgenerator()
         {
             //load id into textbox60
             Random generator = new Random();
             String r = generator.Next(0, 1000000).ToString("D7");
-            textBox1.Text = r;
+            bunifuTextBox2.Text = r;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -195,55 +142,55 @@ namespace Sparrow_Stationary
             //string StrQuery;
             try
             {
-                if (string.IsNullOrWhiteSpace(textBox2.Text))
+                if (string.IsNullOrWhiteSpace(bunifuTextBox3.Text))
                 {
                     MessageBox.Show("Input Customer Name", "Warning", 0, MessageBoxIcon.Error);
-                    textBox2.Focus();
+                    bunifuTextBox3.Focus();
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(textBox3.Text))
+                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
                 {
                     MessageBox.Show("Input Customer Email", "Warning", 0, MessageBoxIcon.Error);
-                    textBox3.Focus();
+                    bunifuTextBox4.Focus();
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(textBox3.Text))
+                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
                 {
                     MessageBox.Show("Input Customer Address", "Warning", 0, MessageBoxIcon.Error);
-                    textBox3.Focus();
+                    bunifuTextBox4.Focus();
                     return;
                 }
-                else if (string.IsNullOrWhiteSpace(dateTimePicker2.Text))
+                else if (string.IsNullOrWhiteSpace(bunifuDatePicker2.Text))
                 {
                     MessageBox.Show("Input Due Date", "Warning", 0, MessageBoxIcon.Error);
-                    dateTimePicker2.Focus();
+                    bunifuDatePicker2.Focus();
                     return;
                 }
 
                 if (dataGridView1.Rows.Count == 0)
                 {
-                    if (string.IsNullOrWhiteSpace(textBox5.Text))
+                    if (string.IsNullOrWhiteSpace(bunifuTextBox6.Text))
                     {
                         MessageBox.Show("Input Product Description", "Warning", 0, MessageBoxIcon.Error);
-                        textBox5.Focus();
+                        bunifuTextBox6.Focus();
                         return;
                     }
-                    else if (string.IsNullOrWhiteSpace(textBox6.Text))
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox7.Text))
                     {
                         MessageBox.Show("Input Quantity", "Warning", 0, MessageBoxIcon.Error);
-                        textBox6.Focus();
+                        bunifuTextBox7.Focus();
                         return;
                     }
-                    else if (string.IsNullOrWhiteSpace(textBox7.Text))
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox8.Text))
                     {
                         MessageBox.Show("Input Unit Price", "Warning", 0, MessageBoxIcon.Error);
-                        textBox7.Focus();
+                        bunifuTextBox8.Focus();
                         return;
                     }
-                    else if (string.IsNullOrWhiteSpace(textBox8.Text))
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox9.Text))
                     {
                         MessageBox.Show("Input Total Price", "Warning", 0, MessageBoxIcon.Error);
-                        textBox8.Focus();
+                        bunifuTextBox9.Focus();
                         return;
                     }
                 }
@@ -252,11 +199,11 @@ namespace Sparrow_Stationary
                     //great.opencon();
 
                     //checking if student already exist
-                    SqlCommand chk = new SqlCommand("SELECT * FROM invoice_add WHERE invoice_id='" + textBox1.Text + "'", dessy.returnCon());
+                    SqlCommand chk = new SqlCommand("SELECT * FROM invoice_add WHERE invoice_id='" + bunifuTextBox2.Text + "'", dessy.returnCon());
                     SqlDataReader dr = chk.ExecuteReader();
                     if (dr.HasRows)
                     {
-                        MessageBox.Show("Customer With Invoice ID  '" + textBox1.Text + "' IS ALREADY REGISTERED", "NOTICE", 0, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Customer With Invoice ID  '" + bunifuTextBox2.Text + "' IS ALREADY REGISTERED", "NOTICE", 0, MessageBoxIcon.Exclamation);
                         dessy.closeCon();
                         return;
                     }
@@ -270,7 +217,7 @@ namespace Sparrow_Stationary
 
                             int count = dataGridView1.Rows.Count;
                             // MessageBox.Show(count.ToString());
-                            SqlCommand cmd1 = new SqlCommand("INSERT INTO invoice_add(customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date) values('" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[2].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "','" + label15.Text + "','" + textBox1.Text + "','" + dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dessy.returnCon());
+                            SqlCommand cmd1 = new SqlCommand("INSERT INTO invoice_add(customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date) values('" + bunifuTextBox3.Text + "','" + bunifuTextBox4.Text + "','" + bunifuTextBox5.Text + "','" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[2].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "','" + label15.Text + "','" + bunifuTextBox2.Text + "','" + bunifuDatePicker1.Text + "','" + bunifuDatePicker2.Text + "')", dessy.returnCon());
                             //'" + dataGridView2.Rows[i].Cells[5].Value.ToString() + "')", dessy.returnCon());
 
                             dessy.opencon();
@@ -280,12 +227,12 @@ namespace Sparrow_Stationary
 
                                 if (!shown)
                                 {
-                                    MessageBox.Show("Invoice Saved For Customer With Name '" + textBox2.Text + "' Successfully", "Success!", 0, MessageBoxIcon.Information);
+                                    MessageBox.Show("Invoice Saved For Customer With Name '" + bunifuTextBox3.Text + "' Successfully", "Success!", 0, MessageBoxIcon.Information);
                                     button10.Enabled = false;
                                     //button10.ForeColor = Color.Red;
                                     //button10.BackColor = Color.White;
-                                    button7.Enabled = false;
-                                    button8.Enabled = false;
+                                    bunifuButton9.Enabled = false;
+                                    bunifuTextBox9.Enabled = false;
                                     button9.Enabled = false;
 
                                     shown = true; 
@@ -344,13 +291,13 @@ namespace Sparrow_Stationary
         {
             try
             {
-                if ((!string.IsNullOrWhiteSpace(textBox7.Text)) && (!string.IsNullOrEmpty(textBox6.Text)))
+                if ((!string.IsNullOrWhiteSpace(bunifuTextBox8.Text)) && (!string.IsNullOrEmpty(bunifuTextBox7.Text)))
                 {
-                    textBox8.Text = (float.Parse(textBox7.Text) * float.Parse(textBox6.Text)).ToString();
+                    bunifuTextBox9.Text = (float.Parse(bunifuTextBox8.Text) * float.Parse(bunifuTextBox7.Text)).ToString();
                 }
                 else
                 {
-                    textBox8.Text = "";
+                    bunifuTextBox9.Text = "";
                 }
             }
             catch (Exception ex)
@@ -361,21 +308,7 @@ namespace Sparrow_Stationary
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if ((!string.IsNullOrWhiteSpace(textBox7.Text)) && (!string.IsNullOrEmpty(textBox6.Text)))
-                {
-                    textBox8.Text = (float.Parse(textBox7.Text) * float.Parse(textBox6.Text)).ToString();
-                }
-                else
-                {
-                    textBox8.Text = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("THE FOLLOWING ERROR OCCURED : " + ex.Message);
-            }
+            
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -395,16 +328,16 @@ namespace Sparrow_Stationary
         }
         public void Clear()
         {
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-            textBox6.Clear();
-            textBox7.Clear();
-            textBox8.Clear();
-            this.dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            this.dateTimePicker2.CustomFormat = " ";
+            bunifuTextBox2.Clear();
+            bunifuTextBox3.Clear();
+            bunifuTextBox4.Clear();
+            bunifuTextBox5.Clear();
+            bunifuTextBox6.Clear();
+            bunifuTextBox7.Clear();
+            bunifuTextBox8.Clear();
+            bunifuTextBox9.Clear();
+            this.bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
+            this.bunifuDatePicker2.CustomFormat = " ";
 
             //dataGridView1.Rows.Clear();
             label15.Text = "0.00";
@@ -437,22 +370,12 @@ namespace Sparrow_Stationary
             {
                 e.Handled = true;
             }
-            textBox7.MaxLength = 4;
+            bunifuTextBox8.MaxLength = 4;
         }
 
         private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            //Only Allows IOne Decimal Point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-            textBox8.MaxLength = 4;
+            
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -462,13 +385,13 @@ namespace Sparrow_Stationary
                 MessageBox.Show("Please Wait Patiently For The Receipts", "Saved", 0, MessageBoxIcon.Information);
 
                 var reports = new Invoice_report();
-                reports.textBox1.Text = this.textBox1.Text;
+                reports.textBox1.Text = this.bunifuTextBox2.Text;
                 dessy.closeCon();
                 dataGridView1.Rows.Clear();
                 reports.Show();
                 button10.Enabled = true;
-                button7.Enabled = true;
-                button8.Enabled = true;
+                bunifuButton9.Enabled = true;
+                bunifuTextBox9.Enabled = true;
                 button9.Enabled = true;
 
             }
@@ -574,8 +497,8 @@ namespace Sparrow_Stationary
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            dateTimePicker2.CustomFormat = "dd/mm/yyy hh:mm:ss";
-            dateTimePicker2.Format = DateTimePickerFormat.Long;
+            bunifuDatePicker2.CustomFormat = "dd/mm/yyy hh:mm:ss";
+            bunifuDatePicker2.Format = DateTimePickerFormat.Long;
 
         }
 
@@ -590,6 +513,8 @@ namespace Sparrow_Stationary
             var user = new USERS();
             user.Hide();
             Randomgenerator();
+            //this.bunifuDatePicker2.Format = DateTimePickerFormat.Custom;
+            //this.bunifuDatePicker2.CustomFormat = " ";
             panel8.Visible = true;
         }
 
@@ -746,6 +671,142 @@ namespace Sparrow_Stationary
             bunifuDataGridView1.DataSource = dt;
             da.Fill(dt);
             button13.Enabled = true;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuTextBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            // MessageBox.Show("INPUT ONLY INTEGER NUMBERS [NO LETTERS OR DECIMAL NUMBERS]","", 0, MessageBoxIcon.Error);
+            return;
+
+        }
+
+        private void bunifuTextBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            // MessageBox.Show("INPUT ONLY INTEGER NUMBERS [NO LETTERS OR DECIMAL NUMBERS]","", 0, MessageBoxIcon.Error);
+            return;
+        }
+
+        private void bunifuTextBox8_TextChange(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((!string.IsNullOrWhiteSpace(bunifuTextBox8.Text)) && (!string.IsNullOrEmpty(bunifuTextBox7.Text)))
+                {
+                    bunifuTextBox9.Text = (Convert.ToInt32(bunifuTextBox8.Text) * Convert.ToInt32(bunifuTextBox7.Text)).ToString();
+                }
+                else
+                {
+                    bunifuTextBox9.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("THE FOLLOWING ERROR OCCURED : " + ex.Message);
+            }
+        }
+
+        private void bunifuTextBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            //Only Allows IOne Decimal Point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            bunifuTextBox8.MaxLength = 4;
+        }
+
+        private void bunifuButton8_Click(object sender, EventArgs e)
+        {
+            ClearRecord();
+            dataGridView1.Rows.Clear();
+
+        }
+
+        private void bunifuButton9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(bunifuTextBox6.Text))
+                {
+                    MessageBox.Show("Input Product Description", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox6.Focus();
+                    return;
+                }
+                else if (string.IsNullOrWhiteSpace(bunifuTextBox7.Text))
+                {
+                    MessageBox.Show("Input Quantity", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox7.Focus();
+                    return;
+                }
+                else if (string.IsNullOrWhiteSpace(bunifuTextBox8.Text))
+                {
+                    MessageBox.Show("Input Unit Price", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox8.Focus();
+                    return;
+                }
+                else if (string.IsNullOrWhiteSpace(bunifuTextBox9.Text))
+                {
+                    MessageBox.Show("Input Total Price", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox9.Focus();
+                    return;
+                }
+                else
+                {
+
+                    string prod_description = bunifuTextBox6.Text;
+                    string qty = bunifuTextBox7.Text;
+                    string u_price = bunifuTextBox8.Text;
+                    string t_price = bunifuTextBox9.Text;
+                    string[] row = { prod_description, qty, u_price, t_price };
+                    dataGridView1.Rows.Add(row);
+                    //clear record
+                    ClearRecord();
+                    //calculating the sum of total prices
+                    int sum = 0;
+                    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                    {
+                        sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                    }
+                    label15.Text = sum.ToString();
+                    textBox9.Text = sum.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void bunifuTextBox7_TextChange(object sender, EventArgs e)
+        {
+            try
+            {
+                if ((!string.IsNullOrWhiteSpace(bunifuTextBox8.Text)) && (!string.IsNullOrEmpty(bunifuTextBox7.Text)))
+                {
+                    bunifuTextBox8.Text = (Convert.ToInt32(bunifuTextBox8.Text) * Convert.ToInt32(bunifuTextBox7.Text)).ToString();
+                }
+                else
+                {
+                    bunifuTextBox8.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("THE FOLLOWING ERROR OCCURED : " + ex.Message);
+            }
         }
     }
 }

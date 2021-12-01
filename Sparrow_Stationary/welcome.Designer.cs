@@ -58,7 +58,7 @@
             this.bunifuCircleProgress1.IsPercentage = false;
             this.bunifuCircleProgress1.LineProgressThickness = 10;
             this.bunifuCircleProgress1.LineThickness = 10;
-            this.bunifuCircleProgress1.Location = new System.Drawing.Point(265, 163);
+            this.bunifuCircleProgress1.Location = new System.Drawing.Point(290, 182);
             this.bunifuCircleProgress1.MarqueeAnimationSpeed = 1;
             this.bunifuCircleProgress1.Minimum = 1;
             this.bunifuCircleProgress1.Name = "bunifuCircleProgress1";
@@ -70,12 +70,12 @@
             this.bunifuCircleProgress1.ProgressFillStyle = Bunifu.UI.WinForms.BunifuCircleProgress.FillStyles.Gradient;
             this.bunifuCircleProgress1.ProgressStartCap = Bunifu.UI.WinForms.BunifuCircleProgress.CapStyles.Round;
             this.bunifuCircleProgress1.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCircleProgress1.Size = new System.Drawing.Size(150, 150);
+            this.bunifuCircleProgress1.Size = new System.Drawing.Size(124, 124);
             this.bunifuCircleProgress1.Step = 1;
             this.bunifuCircleProgress1.SubScriptColor = System.Drawing.Color.Gray;
             this.bunifuCircleProgress1.SubScriptMargin = new System.Windows.Forms.Padding(5, -20, 0, 0);
             this.bunifuCircleProgress1.SubScriptText = "";
-            this.bunifuCircleProgress1.SuperScriptColor = System.Drawing.Color.Black;
+            this.bunifuCircleProgress1.SuperScriptColor = System.Drawing.Color.MediumVioletRed;
             this.bunifuCircleProgress1.SuperScriptMargin = new System.Windows.Forms.Padding(5, 20, 0, 0);
             this.bunifuCircleProgress1.SuperScriptText = "%";
             this.bunifuCircleProgress1.TabIndex = 2;
