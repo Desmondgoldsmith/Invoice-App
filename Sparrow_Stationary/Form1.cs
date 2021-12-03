@@ -37,6 +37,13 @@ namespace Sparrow_Stationary
             //gp.AddEllipse(0, 0, pictureBox1.Width - 3, pictureBox1.Height - 3);
             //Region rg = new Region(gp);
             //pictureBox1.Region = rg;
+            bunifuButton1.Cursor = Cursors.Hand;
+            bunifuButton2.Cursor = Cursors.Hand;
+            bunifuButton3.Cursor = Cursors.Hand;
+            bunifuButton4.Cursor = Cursors.Hand;
+            bunifuButton6.Cursor = Cursors.Hand;
+            bunifuButton5.Cursor = Cursors.Hand;
+
 
             panel8.Visible = false;
             panel9.Visible = false;
@@ -125,146 +132,7 @@ namespace Sparrow_Stationary
 
         private void button9_Click(object sender, EventArgs e)
         {
-            dessy.opencon();
-            //SqlCommand cmd = new SqlCommand("insertInvoice_sp", dessy.returnCon()) { CommandType = CommandType.StoredProcedure };
-            //cmd.Parameters.AddWithValue("@cname", textBox2.Text);
-            //cmd.Parameters.AddWithValue("@cemail", textBox3.Text);
-            //cmd.Parameters.AddWithValue("@cadd", textBox4.Text);
-            //cmd.Parameters.AddWithValue("@proddesc", textBox5.Text);
-            //cmd.Parameters.AddWithValue("@prodqty", textBox6.Text);
-            //cmd.Parameters.AddWithValue("@prodprice", textBox7.Text);
-            //cmd.Parameters.AddWithValue("@totprice", textBox8.Text);
-            //cmd.Parameters.AddWithValue("@invid", textBox1.Text);
-            //cmd.Parameters.AddWithValue("@invdate", textBox2.Text);
-            //cmd.Parameters.AddWithValue("@duedate", textBox3.Text);
-
-
-            //string StrQuery;
-            try
-            {
-                if (string.IsNullOrWhiteSpace(bunifuTextBox3.Text))
-                {
-                    MessageBox.Show("Input Customer Name", "Warning", 0, MessageBoxIcon.Error);
-                    bunifuTextBox3.Focus();
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
-                {
-                    MessageBox.Show("Input Customer Email", "Warning", 0, MessageBoxIcon.Error);
-                    bunifuTextBox4.Focus();
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
-                {
-                    MessageBox.Show("Input Customer Address", "Warning", 0, MessageBoxIcon.Error);
-                    bunifuTextBox4.Focus();
-                    return;
-                }
-                else if (string.IsNullOrWhiteSpace(bunifuDatePicker2.Text))
-                {
-                    MessageBox.Show("Input Due Date", "Warning", 0, MessageBoxIcon.Error);
-                    bunifuDatePicker2.Focus();
-                    return;
-                }
-
-                if (dataGridView1.Rows.Count == 0)
-                {
-                    if (string.IsNullOrWhiteSpace(bunifuTextBox6.Text))
-                    {
-                        MessageBox.Show("Input Product Description", "Warning", 0, MessageBoxIcon.Error);
-                        bunifuTextBox6.Focus();
-                        return;
-                    }
-                    else if (string.IsNullOrWhiteSpace(bunifuTextBox7.Text))
-                    {
-                        MessageBox.Show("Input Quantity", "Warning", 0, MessageBoxIcon.Error);
-                        bunifuTextBox7.Focus();
-                        return;
-                    }
-                    else if (string.IsNullOrWhiteSpace(bunifuTextBox8.Text))
-                    {
-                        MessageBox.Show("Input Unit Price", "Warning", 0, MessageBoxIcon.Error);
-                        bunifuTextBox8.Focus();
-                        return;
-                    }
-                    else if (string.IsNullOrWhiteSpace(bunifuTextBox9.Text))
-                    {
-                        MessageBox.Show("Input Total Price", "Warning", 0, MessageBoxIcon.Error);
-                        bunifuTextBox9.Focus();
-                        return;
-                    }
-                }
-                else
-                {
-                    //great.opencon();
-
-                    //checking if student already exist
-                    SqlCommand chk = new SqlCommand("SELECT * FROM invoice_add WHERE invoice_id='" + bunifuTextBox2.Text + "'", dessy.returnCon());
-                    SqlDataReader dr = chk.ExecuteReader();
-                    if (dr.HasRows)
-                    {
-                        MessageBox.Show("Customer With Invoice ID  '" + bunifuTextBox2.Text + "' IS ALREADY REGISTERED", "NOTICE", 0, MessageBoxIcon.Exclamation);
-                        dessy.closeCon();
-                        return;
-                    }
-                    else
-                    {
-                        dr.Close();
-
-                        bool shown = false;
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-
-                            int count = dataGridView1.Rows.Count;
-                            // MessageBox.Show(count.ToString());
-                            SqlCommand cmd1 = new SqlCommand("INSERT INTO invoice_add(customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date) values('" + bunifuTextBox3.Text + "','" + bunifuTextBox4.Text + "','" + bunifuTextBox5.Text + "','" + dataGridView1.Rows[i].Cells[0].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[1].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[2].Value.ToString() + "','" + dataGridView1.Rows[i].Cells[3].Value.ToString() + "','" + label15.Text + "','" + bunifuTextBox2.Text + "','" + bunifuDatePicker1.Text + "','" + bunifuDatePicker2.Text + "')", dessy.returnCon());
-                            //'" + dataGridView2.Rows[i].Cells[5].Value.ToString() + "')", dessy.returnCon());
-
-                            dessy.opencon();
-
-                            if (cmd1.ExecuteNonQuery() >= 1)
-                            {
-
-                                if (!shown)
-                                {
-                                    MessageBox.Show("Invoice Saved For Customer With Name '" + bunifuTextBox3.Text + "' Successfully", "Success!", 0, MessageBoxIcon.Information);
-                                    button10.Enabled = false;
-                                    //button10.ForeColor = Color.Red;
-                                    //button10.BackColor = Color.White;
-                                    bunifuButton9.Enabled = false;
-                                    bunifuTextBox9.Enabled = false;
-                                    button9.Enabled = false;
-
-                                    shown = true; 
-                                }
-                                
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error In Saving Invoice ", "Error!", 0, MessageBoxIcon.Error);
-
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                //dataGridView1.Rows.Clear();
-                //Clear();
-                //Randomgenerator();
-                dessy.closeCon();
-                //textBox2.Clear();
-                //textBox3.Clear();
-                //textBox4.Clear();
-                //textBox9.Clear();
-                //label15.Text = "0.00";
-            }
+            
 
         }
 
@@ -347,8 +215,7 @@ namespace Sparrow_Stationary
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Clear();
-
+            
         }
 
         private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
@@ -380,30 +247,7 @@ namespace Sparrow_Stationary
 
         private void button11_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MessageBox.Show("Please Wait Patiently For The Receipts", "Saved", 0, MessageBoxIcon.Information);
-
-                var reports = new Invoice_report();
-                reports.textBox1.Text = this.bunifuTextBox2.Text;
-                dessy.closeCon();
-                dataGridView1.Rows.Clear();
-                reports.Show();
-                button10.Enabled = true;
-                bunifuButton9.Enabled = true;
-                bunifuTextBox9.Enabled = true;
-                button9.Enabled = true;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }finally
-            {
-                Clear();
-                Randomgenerator();
-            }
-
+            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -509,7 +353,7 @@ namespace Sparrow_Stationary
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            dataGridView1.ForeColor = Color.Black;
+            bunifuDataGridView2.ForeColor = Color.Black;
             var user = new USERS();
             user.Hide();
             Randomgenerator();
@@ -730,7 +574,7 @@ namespace Sparrow_Stationary
         private void bunifuButton8_Click(object sender, EventArgs e)
         {
             ClearRecord();
-            dataGridView1.Rows.Clear();
+            bunifuDataGridView2.Rows.Clear();
 
         }
 
@@ -770,14 +614,14 @@ namespace Sparrow_Stationary
                     string u_price = bunifuTextBox8.Text;
                     string t_price = bunifuTextBox9.Text;
                     string[] row = { prod_description, qty, u_price, t_price };
-                    dataGridView1.Rows.Add(row);
+                    bunifuDataGridView2.Rows.Add(row);
                     //clear record
                     ClearRecord();
                     //calculating the sum of total prices
                     int sum = 0;
-                    for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                    for (int i = 0; i < bunifuDataGridView2.Rows.Count; ++i)
                     {
-                        sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                        sum += Convert.ToInt32(bunifuDataGridView2.Rows[i].Cells[3].Value);
                     }
                     label15.Text = sum.ToString();
                     textBox9.Text = sum.ToString();
@@ -807,6 +651,184 @@ namespace Sparrow_Stationary
             {
                 MessageBox.Show("THE FOLLOWING ERROR OCCURED : " + ex.Message);
             }
+        }
+
+        private void bunifuButton10_Click(object sender, EventArgs e)
+        {
+            dessy.opencon();
+            //SqlCommand cmd = new SqlCommand("insertInvoice_sp", dessy.returnCon()) { CommandType = CommandType.StoredProcedure };
+            //cmd.Parameters.AddWithValue("@cname", textBox2.Text);
+            //cmd.Parameters.AddWithValue("@cemail", textBox3.Text);
+            //cmd.Parameters.AddWithValue("@cadd", textBox4.Text);
+            //cmd.Parameters.AddWithValue("@proddesc", textBox5.Text);
+            //cmd.Parameters.AddWithValue("@prodqty", textBox6.Text);
+            //cmd.Parameters.AddWithValue("@prodprice", textBox7.Text);
+            //cmd.Parameters.AddWithValue("@totprice", textBox8.Text);
+            //cmd.Parameters.AddWithValue("@invid", textBox1.Text);
+            //cmd.Parameters.AddWithValue("@invdate", textBox2.Text);
+            //cmd.Parameters.AddWithValue("@duedate", textBox3.Text);
+
+
+            //string StrQuery;
+            try
+            {
+                if (string.IsNullOrWhiteSpace(bunifuTextBox3.Text))
+                {
+                    MessageBox.Show("Input Customer Name", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox3.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
+                {
+                    MessageBox.Show("Input Customer Email", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox4.Focus();
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(bunifuTextBox4.Text))
+                {
+                    MessageBox.Show("Input Customer Address", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuTextBox4.Focus();
+                    return;
+                }
+                else if (string.IsNullOrWhiteSpace(bunifuDatePicker2.Text))
+                {
+                    MessageBox.Show("Input Due Date", "Warning", 0, MessageBoxIcon.Error);
+                    bunifuDatePicker2.Focus();
+                    return;
+                }
+
+                if (bunifuDataGridView2.Rows.Count == 0)
+                {
+                    if (string.IsNullOrWhiteSpace(bunifuTextBox6.Text))
+                    {
+                        MessageBox.Show("Input Product Description", "Warning", 0, MessageBoxIcon.Error);
+                        bunifuTextBox6.Focus();
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox7.Text))
+                    {
+                        MessageBox.Show("Input Quantity", "Warning", 0, MessageBoxIcon.Error);
+                        bunifuTextBox7.Focus();
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox8.Text))
+                    {
+                        MessageBox.Show("Input Unit Price", "Warning", 0, MessageBoxIcon.Error);
+                        bunifuTextBox8.Focus();
+                        return;
+                    }
+                    else if (string.IsNullOrWhiteSpace(bunifuTextBox9.Text))
+                    {
+                        MessageBox.Show("Input Total Price", "Warning", 0, MessageBoxIcon.Error);
+                        bunifuTextBox9.Focus();
+                        return;
+                    }
+                }
+                else
+                {
+                    //great.opencon();
+
+                    //checking if student already exist
+                    SqlCommand chk = new SqlCommand("SELECT * FROM invoice_add WHERE invoice_id='" + bunifuTextBox2.Text + "'", dessy.returnCon());
+                    SqlDataReader dr = chk.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        MessageBox.Show("Customer With Invoice ID  '" + bunifuTextBox2.Text + "' IS ALREADY REGISTERED", "NOTICE", 0, MessageBoxIcon.Exclamation);
+                        dessy.closeCon();
+                        return;
+                    }
+                    else
+                    {
+                        dr.Close();
+
+                        bool shown = false;
+                        for (int i = 0; i < bunifuDataGridView2.Rows.Count; i++)
+                        {
+
+                            int count = bunifuDataGridView2.Rows.Count;
+                            // MessageBox.Show(count.ToString());
+                            SqlCommand cmd1 = new SqlCommand("INSERT INTO invoice_add(customerName,customerEmail,customerAddress,productDesc,prod_Qty,prod_price,total_price,invoice_price,invoice_id,invoice_Date,due_date) values('" + bunifuTextBox3.Text + "','" + bunifuTextBox4.Text + "','" + bunifuTextBox5.Text + "','" + bunifuDataGridView2.Rows[i].Cells[0].Value.ToString() + "','" + bunifuDataGridView2.Rows[i].Cells[1].Value.ToString() + "','" + bunifuDataGridView2.Rows[i].Cells[2].Value.ToString() + "','" + bunifuDataGridView2.Rows[i].Cells[3].Value.ToString() + "','" + label15.Text + "','" + bunifuTextBox2.Text + "','" + bunifuDatePicker1.Text + "','" + bunifuDatePicker2.Text + "')", dessy.returnCon());
+                            //'" + dataGridView2.Rows[i].Cells[5].Value.ToString() + "')", dessy.returnCon());
+
+                            dessy.opencon();
+
+                            if (cmd1.ExecuteNonQuery() >= 1)
+                            {
+
+                                if (!shown)
+                                {
+                                    MessageBox.Show("Invoice Saved For Customer With Name '" + bunifuTextBox3.Text + "' Successfully", "Success!", 0, MessageBoxIcon.Information);
+                                    bunifuButton11.Enabled = false;
+                                    //button10.ForeColor = Color.Red;
+                                    //button10.BackColor = Color.White;
+                                    bunifuButton9.Enabled = false;
+                                    bunifuTextBox9.Enabled = false;
+                                    bunifuButton10.Enabled = false;
+
+                                    shown = true;
+                                }
+
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error In Saving Invoice ", "Error!", 0, MessageBoxIcon.Error);
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //dataGridView1.Rows.Clear();
+                //Clear();
+                //Randomgenerator();
+                dessy.closeCon();
+                //textBox2.Clear();
+                //textBox3.Clear();
+                //textBox4.Clear();
+                //textBox9.Clear();
+                //label15.Text = "0.00";
+            }
+        }
+
+        private void bunifuButton11_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void bunifuButton12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show("Please Wait Patiently For The Receipts", "Saved", 0, MessageBoxIcon.Information);
+
+                var reports = new Invoice_report();
+                reports.textBox1.Text = this.bunifuTextBox2.Text;
+                dessy.closeCon();
+                bunifuDataGridView2.Rows.Clear();
+                reports.Show();
+                bunifuButton11.Enabled = true;
+                bunifuButton9.Enabled = true;
+                bunifuTextBox9.Enabled = true;
+                bunifuButton10.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Clear();
+                Randomgenerator();
+            }
+
         }
     }
 }
